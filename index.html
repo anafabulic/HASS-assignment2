@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>What's good data viz?</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&family=Libre+Franklin:wght@400;600&display=swap" rel="stylesheet"> 
+
+    <!-- CSS -->
+    <style>
+        /*Text formatting etc.*/
+        html {
+            font-size: 18px;
+        }
+        body {
+            /*Gruvbox-Light colors*/
+            --bg0: #fbf1c7;   --fg0: #282828;
+            --bg1: #ebdbb2;   --fg1: #3c3836;
+            --bg2: #d5c4a1;   --fg2: #504945;
+            --bg3: #bdae93;   --fg3: #665c54;
+            --bg4: #a89984;   --fg4: #7c6f64;
+            --red: #cc241d; --red_d: #9d0006;
+            --org: #d65d0e; --org_d: #af3a03;
+            --ylw: #d79921; --ylw_d: #b57614;
+            --grn: #98971a; --grn_d: #79740e;
+            --blu: #458588; --blu_d: #076678;
+            --prp: #b16286; --prp_d: #8f3f71;
+            --aqa: #689d6a; --aqa_d: #427b58;
+            --gry: #7c6f64; --gry_d: #928374;
+            background: white;
+            color: var(--fg0);
+            font-family: 'Lato', 'Arial', monospace;
+            font-size: 1rem;
+            line-height: 150%;
+            text-align: justify;
+            text-justify: inter-word;
+        }
+        h1, h2, h3, h4, h5 {
+            font-family: 'Libre Franklin', 'Arial', sans-serif;
+        }
+        h5 {
+            font-family: 'Lato';
+            font-size: 1rem;
+        }
+
+        /* Link formatting */
+        a:link {color: var(--org_d);text-decoration: none;}
+        a:visited {color: var(--red);}
+        a:hover {color: var(--org);}
+
+        /*Image formatting*/
+        img {
+            display: block;
+            max-height: 400px;
+            max-width: 100%;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 20px;
+        }
+
+        /* Simple flexbox */
+        .grid{
+            width: 90%;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .block{
+            display: block;
+            padding: 20px 0;
+        }
+        .col-33{
+            width: 33.3%;
+            float: left;
+        }
+        .col-50{
+            width: 50%;
+            float: left;
+        }
+        .gutter{
+            margin-left: 20px;
+            margin-right: 20px;
+        }
+        .clear{
+            clear: both;
+            display: block;
+        }
+        @media all and (max-width:800px) {
+            .col-33{
+                width: 50%;
+            }
+        }
+        @media all and (max-width:800px) {
+            .col-33{
+                width: 50%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="grid">
+
+<h2>What's good data viz?</h2>
+<h4>(or, what makes things look off?)</h3>
+<p>We're looking at <strong>4</strong> levels of visualisation validation here: <em>domain/problem</em> → <em>data/task abstraction</em> → <em>visualisation idiom</em> → <em>algorithm/technology</em>.</p>
+
+<p><strong>Domain/problem</strong></p>
+<ul>
+<li>Is a particular visualisation approach even necessary or feasible for the problem at hand?</li>
+<li>Is the data available in the first place? Is it machine-readable? How easy will it be to clean/parse?</li>
+</ul>
+
+<p><strong>Task abstraction</strong> (c.f. <a href="https://mattbrehmer.ca/proj/visdc-slides.pdf">Matthew Brehmer</a>)</p>
+<ul>
+<li>Why do you want to visualise this data?</li>
+<li>How is the task supported in terms of the visual lexicon of the chart/product?</li>
+<li>How is the task supported in terms of interaction? How is the task supported in terms of what the user is allowed to view?</li>
+<li>What are the inputs and outputs of the task, and what is the task sequence here?</li>
+</ul>
+
+<p><strong>Visualisation idiom</strong> (c.f. insert reference later)</p>
+<ul>
+<li>blah</li>
+</ul>
+
+<p><strong>Algorithm/technology</strong></p>
+<ul>
+<li>Is the technology stack here effective? Do the tools in use let the visualisation run smoothly, or is this a case of 'everything looks like a nail'?</li>
+<li>Can the structure of front-end/back-end technologies deliver the visualisation efficiently? (e.g. caching the necessary small chunks of data instead of everything at once)</li>
+</ul>
+
+<p>Together, we have a vocabulary to evaluate effective data visualisations across different domains. All data visualisations abstract the process of crunching numbers into a series of mental or visual tasks for the user, via the use of one or more visual idioms. Domain/problem and algorithm/technology problems, however, tend to be more implementation-specific; I personally feel it's a little unfair to critique them given that we're commenting on finished products from afar.</p>
+<p>Here's the framework as applied to two interactive visualisations I found.</p>
+<h4>1a. <a href="https://public.tableau.com/app/profile/preethilo/viz/STATEOFTHECLIMATEGlobalTemperature/STATEOFTHECLIMATEDonut?publish=yes">State of the Climate (donut version)</a></h4>
+<h5>Preethi Lodha, Tableau, 2022</h5>
+<p><img src="./donut.png" alt="Donut chart of global temperatures." title="Donut chart of global temperatures."></p>
+<p>This was posted on <a href="https://www.reddit.com/r/dataisbeautiful/comments/sa25cp/oc_state_of_climate_global_temperatures_a_tale_of/">r/dataisbeautiful</a> as an exercise in evaluating effectiveness between two visualisations of the same data. As a chart of global temperatures, two tasks are immediately apparent. I want to learn how global temperatures have changed over time, and if there are any patterns I can see given the month-level granularity in the data. Specifically, it would be helpful to view the magnitude and pace of the change, while also having a way to observe finer variations in the data.</p>
+<p>What are the differences? In the donut version, you can scroll down the page to watch global temperatures rise to the level of 1951-1980 averages, then supersede them drastically in the last decade. Mousing over each donut's slices allows you to read the temperature for each month in the year. The colours are simple: 5 shades of blue for temperatures cooler than the 1951-1980 average, and 9 shades of red for temperatures hotter than that. The design choice to starkly delineate 'hotter' and 'cooler' temperatures is, charitably speaking, effective in communicating a sense of emergency about rising global temperatures. Humans are bad at reading small numbers (fractions of degrees Celsius per month is hardly imaginable) and I think the drastic colour scheme helps in making that difference clear. However, I think the nuances of the data could be better communicated without resorting to exaggeration.</p>
+<p>(It's also not clear how many fractions of a degree Celsius is represented by a change in colour; the scale isn't labelled well enough.)</p>
+<h5>Solutions</h5>
+<ul>
+<li>Adding a notched scale with a marked zero, as well as choosing round decimal values for the minimum and maximum points, could better link the viewer's perception of colour changes alongside what they're learning about the world's temperature.</li>
+<li>Use a more gentle gradient for the colours so that 'slightly hot' and 'slightly cold' look more similar.</li>
+</ul>
+<p>Sequentially, there is a clear taskflow presented by the donut chart by the sheer height of the data; you're forced to scroll down to see it all, allowing the temperature rise to become apparent along the passage of time. However, it runs the risk of becoming too cluttered, as the circles look too similar and the rhythm becomes monotonous.</p>
+<h5>Solutions</h5>
+<ul>
+<li>Fit everything on one screen.</li>
+<li>Use shapes that pack better without visual clutter, e.g. hexagons or squares.</li>
+</ul>
+<h4>1b. <a href="https://public.tableau.com/app/profile/preethilo/viz/STATEOFTHECLIMATEGlobalTemperature/STATEOFTHECLIMATEDonut?publish=yes">State of the Climate (unit version)</a></h4>
+<h5>Preethi Lodha, Tableau, 2022</h5>
+<p><img src="./unit.png" alt="Unit chart of global temperatures." title="Unit chart of global temperatures."></p>
+<p><em><sub>(click on the 'unit' icon in the top-right-hand corner of the viz)</sub></em></p>
+<p>So is the unit chart better? Immediately, we're able to ascertain that this chart is more compact than the first one. The intended reading direction is now from left-to-right; our eyes are drawn from the sections of lighter blue on the middle and left, towards the sections of dark red on the far right. Months are now represented as 12 slices of each vertical bar; by reading downwards, you can immediately identify which months tend to be slightly hotter than the other (March-ish, and maybe October). We couldn't make this comparison in the donut chart, because we couldn't see all the years together like this at once, unless we scrolled up and down a lot and Rain-Manned the heck out of the donut slices. This is an important lesson for task abstraction design&mdash;patterns should be discernable with as little input by the user as possible. Our eyes scan a lot faster than our fingers.</p>
+<p>The taskflow&mdash;a linear journey through time with opportunities to mouseover and explore specific moments&mdash;remains largely the same. It does become a bit harder to draw attention to individual months or years the way the donut chart does, simply because every year is squashed together so densely. This is not really an issue when the main story at hand is the drastic rise in temperatures over the last four decades, but it could be detrimental if the chartmaker wanted to highlight particular years, like the anomalously-warm 1998.</p>
+<div class="col-50"><div class="block gutter">
+<p><img src="./donutzoom.png" alt="1998 is immediately apparent as an anomaly even amidst rising global temperatures in the donut chart." title="1998 is immediately apparent as an anomaly even amidst rising global temperatures in the donut chart."></p>
+</div></div>
+<div class="col-50"><div class="block gutter">
+<p><img src="./unitzoom.png" alt="It's harder to spot this anomaly in the unit chart." title="It's harder to spot this anomaly in the unit chart."></p>
+</div></div>
+<p style="text-align:center"><em><sub>In which chart is it easier to spot the year 1998?</sub></em></p>
+<p>Overall, I think the unit chart is more effective here. It 'feels right', to be sure, but having a lexicon for visualisation validation lets us talk about <em>how</em>. However, it still doesn't solve the issue of the exaggerated colour scale, or help us understand just how bad a 1.46&#176;C rise in world temperatures can be. At worst, visualisations like these can be fuel for climate change denialists to 'prove' that the mainstream media is prone to catastrophising minor temperature fluctuations. A better visualisation should be able to communicate the scale of climate change and the danger it poses without using visual idioms that can be construed as misleading.</p>
+<h4>2. <a href="https://obamawhitehouse.archives.gov/interactive-budget">President Barack Obama's Proposed Tax Budget</a></h4>
+<h5>White House Office of Management and Budget, Canvas, 2016</h5>
+<p><img src="./whitehouse.png" alt="Tree diagram of the United States' 2016 budget." title="Tree diagram of the United States' 2016 budget."></p>
+<p>I'm a lot less charitable about this one given that it's a professional illustration for a presidential campaign. The task we have here is simple: comparing how much Obama's administration planned to spend on certain priorities over others in 2016.</p>
+<p>It's presented as a treemap, which makes sense for presenting the hierarchical nature of a national budget. Spending is classed into program areas, then classed into specific outlays for that area. Bigger rectangles mean more spending. Program areas share the same colour, with each outlay in a different hue, which makes the categories immediately distinct. Clicking each rectangle lets a specific outlay or category or outlay fill the screen, which lets the smaller categories be read. Upon filling the screen, the text changes to display Obama's campaign priorities regarding that budget outlay, plus a link to further information elsewhere.</p>
+<p><img src="./whitehousezoom.png" alt="Zoomed-in screen upon clicking 'Ongoing Operations' under 'National Defense'." title="Zoomed-in screen upon clicking 'Ongoing Operations' under 'National Defense'."></p>
+<p>The first flaw that pops out is that the font size for the visualisation is static. The smaller budget categories are completely unreadable as a result.</p>
+<p>The bigger problem, though, is the difficulty in communicating data through area. Humans can estimate lengths and widths more precisely than areas; it's hard to tell, for example, how much more was spent on national defense than income security. In the treemap's defense, it can be argued that the format remains effective for communicating order-of-magnitude differences. However, considering that this visualisation was designed as interactive in mind, there are definitely ways to allow better granularity.</p>
+<h5>Solutions</h5>
+<ul>
+<li>Categories could have an option to be hidden/unhidden or rearranged alongside each other.</li>
+<li>A sortable bar chart could help visualise the relative importance between categories. This also allows smaller categories to be more easily discovered.</li>
+</ul>
+<p>The second issue I have with this is the prominence of the numbers. It takes a while to realise where the spending for each category can be found. You have the mouseover the drab grey headers for each category&mdash;a kind of design trap, as the headers can't be more prominent without messing up the visual hierarchy from general to specific, but their lack of prominence makes finding out crucial info about their exact figures unintuitive. Again, any patterns in the data should be easily-discoverable with a minimum of user input.</p>
+<h5>Solutions</h5>
+<ul>
+<li>Putting the spending numbers on each rectangle (or on a caption pointing to each rectangle) would make these patterns more visible, helping the reader understand just how much money is in play.</li>
+<li>The design trap of the drab grey headers could be overcome by printing each general spending category (health care, national defense, etc.) on each big rectangle/caption first, then having the rectangle decompose into specific outlays upon clicking through.</li>
+</ul>
+<p>Formatting the spending numbers in human-readable amounts would also help in parsing the data&mdash;e.g. printing &quot;$589.7 billion USD&quot; instead of &quot;$589,720&quot; and a table header stating the unit of measurement. I'll admit it took more time than necessary for me to figure out that the amount of spending at play here was on the order of magnitude of billions. Don't just blindly pull data from a backend&mdash;try to parse it for your reader first.</p>
+<p>Overall, for a professional application this needs a bit of work.</p>
+<h3>Conclusion</h3>
+<p>Using a visualisation validation framework allows us to clarify what 'feels' wrong and easily act upon it. While some of these criteria appear subjective at first glance, breaking down a visualisation into its basic tasks allows us to judge them on their own terms, turning bad design from an entertaining spectacle to a solvable problem instead.</p>
+<h4>Key takeaways:</h4>
+<ul>
+<li>Patterns should be discernable with minimal user interaction.</li>
+<li>Use animation to your advantage.</li>
+<li>Check if your idiom fits the format and task. Does the type of chart hide certain important data? Does the type of chart fit your reader's viewing format?</li>
+</ul>
+<p>I hope this has been as helpful for you as it was for me. :)</p>
+<br>
+<br>
+<hr/>
+<footer>
+<p>Sean Chua (1006466)
+<br>HASS02.526: Interactive Data Visualisation</p>
+</footer>
+</div>
+
+</body>
+</html>
